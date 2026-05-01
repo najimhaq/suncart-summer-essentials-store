@@ -17,14 +17,14 @@ export const auth = betterAuth({
       clientId: process.env.GOOGLE_CLIENT_SUNCART_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SUNCART_SECRET,
     },
-    github: {
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    },
   },
   database: mongodbAdapter(db, {
     client,
   }),
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,
+  trustedOrigins: [
+    'http://localhost:3000',
+    'https://suncart-summer-essentials-store-ten.vercel.app',
+  ],
 });

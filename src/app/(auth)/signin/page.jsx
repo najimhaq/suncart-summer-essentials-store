@@ -48,25 +48,26 @@ const SignInPage = () => {
       setIsLoading(false);
     }
   };
-  const handleGoogleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
+const handleGoogleSubmit = async (e) => {
+  e.preventDefault();
+  setIsLoading(true);
+  setError('');
 
-    try {
-      const result = await authClient.signIn.social({
-        provider: 'google',
-        callbackURL: '/my-profile', // সাইন ইনের পরে কোথায় যাবে
-      });
-
-    } catch (err) {
-      console.error('Google sign in error:', err);
-      setError('Failed to sign in with Google. Please try again.');
-      toast.error('Google sign in failed');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  try {
+    await authClient.signIn.social({
+      provider: 'google',
+      callbackURL: '/my-profile', // ← এই প্রপার্টিটি যোগ করুন
+      // errorCallbackURL: "/signin",  // optional: এরর হলে কোথায় যাবে
+      // newUserCallbackURL: "/welcome",  // optional: নতুন ইউজারের জন্য
+    });
+  } catch (err) {
+    console.error('Google sign in error:', err);
+    setError('Failed to sign in with Google. Please try again.');
+    toast.error('Google sign in failed');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <section className='relative flex min-h-screen items-center justify-center overflow-hidden bg-sand px-4 py-12'>
