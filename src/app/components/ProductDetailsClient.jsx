@@ -12,11 +12,14 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
+
+
 
 export default function ProductDetailsClient({ product }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || 'M');
+
 
   const productImages = product.images || [product.image];
   const discount = product.originalPrice
@@ -59,7 +62,7 @@ export default function ProductDetailsClient({ product }) {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                    className={`shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
                       selectedImage === index
                         ? 'border-primary scale-105'
                         : 'border-transparent hover:border-primary/40'
@@ -94,11 +97,11 @@ export default function ProductDetailsClient({ product }) {
                     return (
                       <Star
                         key={i}
-                        className={`w-5 h-5 ${
+                        className={`w-3 h-3 ${
                           isFullStar
-                            ? 'fill-secondary text-secondary'
+                            ? 'fill-sunset text-sunset'
                             : isHalfStar
-                              ? 'fill-secondary text-secondary opacity-50'
+                              ? 'fill-mango text-mango opacity-50'
                               : 'text-gray-300'
                         }`}
                       />
@@ -114,7 +117,7 @@ export default function ProductDetailsClient({ product }) {
             </div>
 
             <div className='flex items-baseline gap-3 flex-wrap'>
-              <span className='font-heading text-4xl font-bold text-primary'>
+              <span className='font-heading text-4xl font-bold text-foreground'>
                 ${product.price}
               </span>
 
@@ -157,12 +160,12 @@ export default function ProductDetailsClient({ product }) {
             <div className='flex items-center gap-2'>
               <div
                 className={`w-2 h-2 rounded-full ${
-                  product.stock > 0 ? 'bg-green-500' : 'bg-red-500'
+                  product.stock > 0 ? 'bg-wave' : 'bg-red-500'
                 }`}
               />
               <span
                 className={`text-sm font-medium ${
-                  product.stock > 0 ? 'text-green-600' : 'text-red-600'
+                  product.stock > 0 ? 'text-sunset' : 'text-red-600'
                 }`}
               >
                 {product.stock > 0
@@ -170,30 +173,6 @@ export default function ProductDetailsClient({ product }) {
                   : 'Out of Stock'}
               </span>
             </div>
-
-            {product.sizes && product.sizes.length > 0 && (
-              <div>
-                <label className='font-medium text-foreground mb-3 block'>
-                  Select Size
-                </label>
-
-                <div className='flex gap-3 flex-wrap'>
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`w-12 h-12 rounded-xl font-medium transition-all ${
-                        selectedSize === size
-                          ? 'bg-primary text-white shadow-lg'
-                          : 'bg-white border-2 border-gray-200 text-foreground hover:border-primary'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
 
             <div className='flex flex-wrap gap-4'>
               <div className='flex items-center bg-white rounded-xl border border-gray-200'>
@@ -219,8 +198,9 @@ export default function ProductDetailsClient({ product }) {
               </div>
 
               <button
+                onClick={() => toast.success('Added to cart!')}
                 disabled={product.stock === 0}
-                className={`flex-1 min-w-[200px] py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-heading font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 ${
+                className={`flex-1 min-w-50 py-3 bg-linear-to-r from-wave to-cyan-600 text-white font-heading font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 ${
                   product.stock === 0 ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
@@ -239,15 +219,15 @@ export default function ProductDetailsClient({ product }) {
 
             <div className='grid grid-cols-3 gap-4 pt-6 border-t border-gray-100'>
               <div className='flex flex-col items-center gap-2 text-center'>
-                <Truck className='w-6 h-6 text-primary' />
+                <Truck className='w-6 h-6 text-wave' />
                 <span className='text-sm text-gray-500'>Free Shipping</span>
               </div>
               <div className='flex flex-col items-center gap-2 text-center'>
-                <Shield className='w-6 h-6 text-accent' />
+                <Shield className='w-6 h-6 text-wave' />
                 <span className='text-sm text-gray-500'>1 Year Warranty</span>
               </div>
               <div className='flex flex-col items-center gap-2 text-center'>
-                <RotateCcw className='w-6 h-6 text-secondary' />
+                <RotateCcw className='w-6 h-6 text-wave' />
                 <span className='text-sm text-gray-500'>7 Days Return</span>
               </div>
             </div>

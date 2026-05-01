@@ -1,7 +1,7 @@
-
 import './globals.css';
 import { Inter, Pacifico, Poppins } from 'next/font/google';
-import { ToastContainer } from 'react-toastify/unstyled';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -32,12 +32,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang='en'
-      suppressHydrationWarning={true}
+      suppressHydrationWarning
       className={`${poppins.variable} ${inter.variable} ${pacifico.variable}`}
     >
-      <body className='antialiased'>
+      <body className='antialiased bg-[#f7f3eb] text-dusk'>
         <Navbar />
-        <main className='container mx-auto flex-1 px-4'>{children}</main>
+        <main className='container mx-auto flex-1 px-4 pt-28'>{children}</main>
         <Footer />
         <ToastContainer position='top-right' autoClose={2000} />
       </body>

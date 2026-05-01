@@ -1,11 +1,3 @@
-// const features = [
-//   '☀️ Premium Sunglasses',
-//   '🏖️ Beach Accessories',
-//   '🧴 Sunscreen & Skincare',
-//   '👕 Trendy Summer Outfits',
-// ];
-//
-
 'use client';
 
 import Link from 'next/link';

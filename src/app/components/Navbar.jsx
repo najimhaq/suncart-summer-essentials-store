@@ -1,103 +1,167 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import 'animate.css';
-import { Sun, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'Products', path: '/products' },
+  { name: 'My Profile', path: '/my-profile' },
+  { name: 'Contact', path: '/contact' },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
-    { name: 'My Profile', href: '/my-profile' },
-    { name: 'About', href: '/about' },
-  ];
+  const isActivePath = (path) => {
+    if (path === '/') return pathname === '/';
+    return pathname.startsWith(path);
+  };
+
+  const isProductsPage = pathname === '/products';
+  const isSignInPage = pathname === '/signin';
 
   return (
-    <nav className='sticky top-0 z-50 bg-sand/90 backdrop-blur-md shadow-sm border-b border-sand'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between items-center h-16'>
+    <header className='fixed top-0 left-0 z-50 w-full'>
+      <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
+        <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
           <Link
             href='/'
-            className='flex items-center gap-2 group animate__animated animate__fadeInDown'
+            className='flex items-center gap-3 hover:scale-105 transition-all duration-300 animate__animated animate__fadeInDown'
           >
-            <Sun className='w-8 h-8 text-sunset transition-transform duration-500 group-hover:rotate-180' />
-            <span className='font-bold text-2xl text-dusk font-script'>
-              Sun<span className='text-sunset'>Cart</span>
-            </span>
+            <div className='flex h-11 w-11 items-center justify-center rounded-full border border-sunset/30 bg-white/70 text-sunset shadow-sm'>
+              <ShoppingBag className='h-5 w-5' />
+            </div>
+
+            <div className='leading-tight'>
+              <h2 className='font-script text-2xl font-bold tracking-wide text-dusk'>
+                Sun<span className='text-sunset'>Cart</span>
+              </h2>
+              <p className='hidden text-[11px] uppercase tracking-[0.28em] text-dusk/60 sm:block'>
+                Summer Store
+              </p>
+            </div>
           </Link>
 
-          <div className='hidden md:flex items-center gap-8 animate__animated animate__fadeInDown'>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className='text-dusk/80 hover:text-wave transition-colors duration-300 relative group'
-              >
-                {link.name}
-                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-wave transition-all duration-300 group-hover:w-full' />
-              </Link>
-            ))}
+          <div className='hidden items-center gap-2 rounded-full border border-dusk/10 bg-white/40 px-2 py-2 md:flex'>
+            {navLinks.map((link) => {
+              const isActive = isActivePath(link.path);
+
+              return (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300  ${
+                    isActive
+                      ? 'bg-sunset text-white shadow-md'
+                      : 'text-dusk/80 hover:bg-white/70 hover:text-wave'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
-          <div className='flex items-center gap-4'>
+          <div className='hidden items-center gap-3 md:flex'>
             <Link
-              href='/cart'
-              className='relative p-2 hover:bg-sand rounded-full transition-colors animate__animated animate__fadeInRight'
+              href='/signin'
+              aria-current={isSignInPage ? 'page' : undefined}
+              className={`rounded-full border px-5 py-2.5 text-sm font-semibold tracking-wide transition duration-300 ${
+                isSignInPage
+                  ? 'border-sunset bg-transparent text-sunset'
+                  : 'border-sunset text-sunset hover:bg-sunset hover:text-white'
+              }`}
             >
-              <ShoppingCart className='w-5 h-5 text-dusk' />
-              <span className='absolute -top-1 -right-1 w-5 h-5 bg-sunset text-white text-xs rounded-full flex items-center justify-center font-bold'>
-                3
-              </span>
+              Sign In
+            </Link>
+
+            <Link
+              href='/products'
+              aria-current={isProductsPage ? 'page' : undefined}
+              className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold tracking-wide transition duration-300 ${
+                isProductsPage
+                  ? 'border-sunset bg-transparent text-sunset'
+                  : 'border-sunset bg-sunset text-white hover:bg-transparent hover:text-sunset'
+              }`}
+            >
+              Shop Now
+            </Link>
+          </div>
+
+          <button
+            type='button'
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label='Toggle menu'
+            aria-expanded={menuOpen}
+            className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-dusk/10 bg-white/40 text-dusk md:hidden'
+          >
+            {menuOpen ? (
+              <X className='h-5 w-5' />
+            ) : (
+              <Menu className='h-5 w-5' />
+            )}
+          </button>
+        </div>
+
+        <div
+          className={`overflow-hidden transition-all duration-300 md:hidden ${
+            menuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className='space-y-2 px-4 pb-4 pt-2'>
+            {navLinks.map((link) => {
+              const isActive = isActivePath(link.path);
+
+              return (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`block rounded-xl px-4 py-3 text-sm font-medium tracking-wide transition ${
+                    isActive
+                      ? 'bg-sunset text-white'
+                      : 'border border-dusk/10 bg-white/40 text-dusk/85 hover:bg-white/70'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+
+            <Link
+              href='/products'
+              onClick={() => setMenuOpen(false)}
+              aria-current={isProductsPage ? 'page' : undefined}
+              className={`block rounded-xl px-4 py-3 text-center text-sm font-semibold tracking-wide transition ${
+                isProductsPage
+                  ? 'border border-sunset bg-transparent text-sunset'
+                  : 'bg-gradient-to-r from-mango to-sunset text-white hover:opacity-90'
+              }`}
+            >
+              Shop Now
             </Link>
 
             <Link
               href='/signin'
-              className='hidden md:flex items-center gap-2 px-4 py-2 bg-linear-to-r from-mango to-sunset text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300 animate__animated animate__zoomIn'
-            >
-              <User className='w-4 h-4' />
-              Sign In
-            </Link>
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className='md:hidden p-2 text-dusk'
-              aria-label='Toggle menu'
-            >
-              {isOpen ? (
-                <X className='w-6 h-6' />
-              ) : (
-                <Menu className='w-6 h-6' />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div className='md:hidden bg-sand border-t border-sand animate__animated animate__fadeInDown'>
-          <div className='px-4 py-4 space-y-3'>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className='block py-2 text-dusk hover:text-wave font-medium transition-colors'
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              href='/signin'
-              className='block w-full text-center py-3 bg-linear-to-r from-mango to-sunset text-white rounded-full font-medium mt-4'
+              onClick={() => setMenuOpen(false)}
+              aria-current={isSignInPage ? 'page' : undefined}
+              className={`block w-full rounded-full border px-4 py-3 text-center text-sm font-semibold transition ${
+                isSignInPage
+                  ? 'border-sunset bg-transparent text-sunset'
+                  : 'border-sunset text-sunset hover:bg-sunset hover:text-white'
+              }`}
             >
               Sign In
             </Link>
           </div>
         </div>
-      )}
-    </nav>
+      </nav>
+    </header>
   );
 }

@@ -23,7 +23,7 @@ export default function Banner() {
 
         <div className='relative h-full flex items-center px-6 md:px-12 lg:px-20 py-16 animate__animated animate__fadeInUp'>
           <div className='max-w-xl space-y-6'>
-            <div className='text-wave font-script font-semibold tracking-wide text-xl animate__animated animate__fadeInDown'>
+            <div className='text-mango font-script font-semibold tracking-wide text-xl animate__animated animate__fadeInDown'>
               Suncart
             </div>
 
@@ -69,7 +69,7 @@ export default function Banner() {
             </div>
 
             <Link
-              href='/products/sunscreen'
+              href='/products'
               className='inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-mango to-sunset text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 animate__animated animate__fadeInUp animate__delay-2s'
             >
               Shop Now

@@ -73,7 +73,7 @@ export default function ProductCard({ product }) {
           {[...Array(fullStars)].map((_, i) => (
             <svg
               key={`full-${i}`}
-              className='w-4 h-4 text-secondary fill-current'
+              className='w-4 h-4 text-sunset fill-current'
               viewBox='0 0 24 24'
             >
               <path d='M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z' />
@@ -111,7 +111,7 @@ export default function ProductCard({ product }) {
 
         <div className='mt-3 flex items-center justify-between'>
           <div className='flex items-baseline gap-2'>
-            <span className='font-heading font-bold text-2xl text-primary'>
+            <span className='font-heading font-bold text-2xl text-wave'>
               ${product.price}
             </span>
           </div>
@@ -129,7 +129,7 @@ export default function ProductCard({ product }) {
             className={`w-full inline-flex items-center justify-center font-body font-semibold py-2.5 rounded-full transition-all duration-300 ${
               isOutOfStock
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed pointer-events-none'
-                : 'bg-primary text-white hover:bg-primary-dark hover:shadow-lg'
+                : 'bg-linear-to-r from-wave to-cyan-600 text-white hover:bg-primary-dark hover:shadow-lg'
             }`}
           >
             {isOutOfStock ? 'Out of Stock' : 'View Details'}
