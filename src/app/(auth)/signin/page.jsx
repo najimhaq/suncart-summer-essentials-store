@@ -50,22 +50,17 @@ const SignInPage = () => {
   };
 const handleGoogleSubmit = async (e) => {
   e.preventDefault();
-  setIsLoading(true);
-  setError('');
-
   try {
     await authClient.signIn.social({
       provider: 'google',
-      callbackURL: '/my-profile', // ← এই প্রপার্টিটি যোগ করুন
-      // errorCallbackURL: "/signin",  // optional: এরর হলে কোথায় যাবে
-      // newUserCallbackURL: "/welcome",  // optional: নতুন ইউজারের জন্য
+      callbackURL: `${
+        process.env.NODE_ENV === 'production'
+          ? 'https://suncart-summer-essentials-store-ten.vercel.app'
+          : 'http://localhost:3000'
+      }/my-profile`,
     });
-  } catch (err) {
-    console.error('Google sign in error:', err);
-    setError('Failed to sign in with Google. Please try again.');
-    toast.error('Google sign in failed');
-  } finally {
-    setIsLoading(false);
+  } catch (error) {
+    console.error(error);
   }
 };
 
