@@ -21,17 +21,27 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-
+  // সেফ অ্যাক্টিভ পাথ চেকার - startsWith এর সমস্যা সমাধান করা হয়েছে
   const isActivePath = (path) => {
     if (!pathname) return false;
+
+    // এক্সাক্ট ম্যাচের জন্য
     if (path === '/') return pathname === '/';
-    return pathname.startsWith(path);
+
+    // ইনক্লুডস ব্যবহার করা better এবং safe
+    return pathname.includes(path);
   };
 
-  const isProductsPage = mounted && pathname === '/products';
-  const isSignInPage = mounted && pathname === '/signin';
+  // এক্সাক্ট ম্যাচের জন্য (Sign In এবং Shop Now বাটনের জন্য)
+  const isExactMatch = (path) => {
+    if (!pathname) return false;
+    return pathname === path;
+  };
 
- 
+  const isProductsPage = mounted && isExactMatch('/products');
+  const isSignInPage = mounted && isExactMatch('/signin');
+
+  // লোডিং স্টেট
   if (!mounted) {
     return (
       <header className='fixed top-0 left-0 z-50 w-full'>
@@ -81,6 +91,7 @@ export default function Navbar() {
             </div>
           </Link>
 
+          {/* ডেস্কটপ নেভিগেশন */}
           <div className='hidden items-center gap-2 rounded-full border border-dusk/10 bg-white/40 px-2 py-2 md:flex'>
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
@@ -90,7 +101,7 @@ export default function Navbar() {
                   key={link.path}
                   href={link.path}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300  ${
+                  className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
                     isActive
                       ? 'bg-sunset text-white shadow-md'
                       : 'text-dusk/80 hover:bg-white/70 hover:text-wave'
@@ -102,6 +113,7 @@ export default function Navbar() {
             })}
           </div>
 
+          {/* ডেস্কটপ অ্যাকশন বাটন */}
           <div className='hidden items-center gap-3 md:flex'>
             <Link
               href='/signin'
@@ -128,6 +140,7 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* মোবাইল মেনু বাটন */}
           <button
             type='button'
             onClick={() => setMenuOpen(!menuOpen)}
@@ -143,6 +156,7 @@ export default function Navbar() {
           </button>
         </div>
 
+        {/* মোবাইল মেনু ড্রপডাউন */}
         <div
           className={`overflow-hidden transition-all duration-300 md:hidden ${
             menuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'

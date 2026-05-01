@@ -63,8 +63,8 @@ export default function Banner() {
               <div className='w-px h-12 bg-white/30' />
 
               <div>
-                <p className='text-2xl font-bold text-mango'>৳1,299</p>
-                <p className='text-white/40 text-sm line-through'>৳1,799</p>
+                <p className='text-2xl font-bold text-mango'>$99</p>
+                <p className='text-white/40 text-sm line-through'>$129</p>
               </div>
             </div>
 
