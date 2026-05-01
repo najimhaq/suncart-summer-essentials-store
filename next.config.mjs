@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  reactCompiler: true,
-  swcMinify: true,
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
