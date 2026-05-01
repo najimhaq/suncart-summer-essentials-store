@@ -10,6 +10,12 @@ const db = client.db('suncart');
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
+    socialProviders: {
+      google: {
+        clientId: process.env.GOOGLE_CLINT_SUNCART_ID,
+        clientSecret: process.env.GOOGLE_CLINT_SUNCART_SECRET,
+      },
+    },
   },
   database: mongodbAdapter(db, {
     // Optional: if you don't provide a client, database transactions won't be enabled.
