@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 
 const navLinks = [
@@ -15,14 +15,49 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
 
   const isActivePath = (path) => {
+    if (!pathname) return false;
     if (path === '/') return pathname === '/';
     return pathname.startsWith(path);
   };
 
-  const isProductsPage = pathname === '/products';
-  const isSignInPage = pathname === '/signin';
+  const isProductsPage = mounted && pathname === '/products';
+  const isSignInPage = mounted && pathname === '/signin';
+
+ 
+  if (!mounted) {
+    return (
+      <header className='fixed top-0 left-0 z-50 w-full'>
+        <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
+          <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
+            <Link
+              href='/'
+              className='flex items-center gap-3 hover:scale-105 transition-all duration-300'
+            >
+              <div className='flex h-11 w-11 items-center justify-center rounded-full border border-sunset/30 bg-white/70 text-sunset shadow-sm'>
+                <ShoppingBag className='h-5 w-5' />
+              </div>
+              <div className='leading-tight'>
+                <h2 className='font-script text-2xl font-bold tracking-wide text-dusk'>
+                  Sun<span className='text-sunset'>Cart</span>
+                </h2>
+                <p className='hidden text-[11px] uppercase tracking-[0.28em] text-dusk/60 sm:block'>
+                  Summer Store
+                </p>
+              </div>
+            </Link>
+          </div>
+        </nav>
+      </header>
+    );
+  }
 
   return (
     <header className='fixed top-0 left-0 z-50 w-full'>
