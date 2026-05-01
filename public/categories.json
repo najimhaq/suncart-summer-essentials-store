@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "UV Protection Sunglasses",
+    "slug": "uv-protection-sunglasses"
+  },
+  { "id": 2, "name": "Beach Flip Flops", "slug": "beach-flip-flops" },
+  { "id": 3, "name": "Summer Hat", "slug": "summer-hat" },
+  { "id": 4, "name": "Aloe Vera Gel", "slug": "aloe-vera-gel" },
+  { "id": 5, "name": "Beach Towel", "slug": "beach-towel" },
+  { "id": 6, "name": "Portable Cooler Bag", "slug": "portable-cooler-bag" },
+  { "id": 7, "name": "Summer Dress", "slug": "summer-dress" },
+  { "id": 8, "name": "Beach Umbrella", "slug": "beach-umbrella" },
+  { "id": 9, "name": "Water Bottle", "slug": "water-bottle" },
+  { "id": 10, "name": "Swim Shorts", "slug": "swim-shorts" },
+  {
+    "id": 11,
+    "name": "Sunscreen Lotion SPF 50",
+    "slug": "sunscreen-lotion-spf-50"
+  },
+  { "id": 12, "name": "Beach Chair", "slug": "beach-chair" }
+]
