@@ -1,3 +1,4 @@
+// app/components/Navbar.jsx
 'use client';
 
 import Link from 'next/link';
@@ -21,36 +22,27 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  // সেফ অ্যাক্টিভ পাথ চেকার - startsWith এর সমস্যা সমাধান করা হয়েছে
   const isActivePath = (path) => {
-    if (!pathname) return false;
+    if (!pathname || typeof pathname !== 'string') {
+      return false;
+    }
 
-    // এক্সাক্ট ম্যাচের জন্য
-    if (path === '/') return pathname === '/';
+    if (path === '/') {
+      return pathname === '/';
+    }
 
-    // ইনক্লুডস ব্যবহার করা better এবং safe
-    return pathname.includes(path);
-  };
-
-  // এক্সাক্ট ম্যাচের জন্য (Sign In এবং Shop Now বাটনের জন্য)
-  const isExactMatch = (path) => {
-    if (!pathname) return false;
     return pathname === path;
   };
 
-  const isProductsPage = mounted && isExactMatch('/products');
-  const isSignInPage = mounted && isExactMatch('/signin');
+  const isProductsPage = mounted && pathname === '/products';
+  const isSignInPage = mounted && pathname === '/signin';
 
-  // লোডিং স্টেট
   if (!mounted) {
     return (
       <header className='fixed top-0 left-0 z-50 w-full'>
         <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
           <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
-            <Link
-              href='/'
-              className='flex items-center gap-3 hover:scale-105 transition-all duration-300'
-            >
+            <Link href='/' className='flex items-center gap-3'>
               <div className='flex h-11 w-11 items-center justify-center rounded-full border border-sunset/30 bg-white/70 text-sunset shadow-sm'>
                 <ShoppingBag className='h-5 w-5' />
               </div>
@@ -73,14 +65,14 @@ export default function Navbar() {
     <header className='fixed top-0 left-0 z-50 w-full'>
       <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
         <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
+          {/* লোগো */}
           <Link
             href='/'
-            className='flex items-center gap-3 hover:scale-105 transition-all duration-300 animate__animated animate__fadeInDown'
+            className='flex items-center gap-3 hover:scale-105 transition-all duration-300'
           >
             <div className='flex h-11 w-11 items-center justify-center rounded-full border border-sunset/30 bg-white/70 text-sunset shadow-sm'>
               <ShoppingBag className='h-5 w-5' />
             </div>
-
             <div className='leading-tight'>
               <h2 className='font-script text-2xl font-bold tracking-wide text-dusk'>
                 Sun<span className='text-sunset'>Cart</span>
@@ -95,12 +87,10 @@ export default function Navbar() {
           <div className='hidden items-center gap-2 rounded-full border border-dusk/10 bg-white/40 px-2 py-2 md:flex'>
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
-
               return (
                 <Link
                   key={link.path}
                   href={link.path}
-                  aria-current={isActive ? 'page' : undefined}
                   className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
                     isActive
                       ? 'bg-sunset text-white shadow-md'
@@ -113,11 +103,10 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* ডেস্কটপ অ্যাকশন বাটন */}
+          {/* ডেস্কটপ বাটন */}
           <div className='hidden items-center gap-3 md:flex'>
             <Link
               href='/signin'
-              aria-current={isSignInPage ? 'page' : undefined}
               className={`rounded-full border px-5 py-2.5 text-sm font-semibold tracking-wide transition duration-300 ${
                 isSignInPage
                   ? 'border-sunset bg-transparent text-sunset'
@@ -126,10 +115,8 @@ export default function Navbar() {
             >
               Sign In
             </Link>
-
             <Link
               href='/products'
-              aria-current={isProductsPage ? 'page' : undefined}
               className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold tracking-wide transition duration-300 ${
                 isProductsPage
                   ? 'border-sunset bg-transparent text-sunset'
@@ -142,10 +129,7 @@ export default function Navbar() {
 
           {/* মোবাইল মেনু বাটন */}
           <button
-            type='button'
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label='Toggle menu'
-            aria-expanded={menuOpen}
             className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-dusk/10 bg-white/40 text-dusk md:hidden'
           >
             {menuOpen ? (
@@ -156,7 +140,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* মোবাইল মেনু ড্রপডাউন */}
+        {/* Mobile */}
         <div
           className={`overflow-hidden transition-all duration-300 md:hidden ${
             menuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
@@ -165,13 +149,11 @@ export default function Navbar() {
           <div className='space-y-2 px-4 pb-4 pt-2'>
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
-
               return (
                 <Link
                   key={link.path}
                   href={link.path}
                   onClick={() => setMenuOpen(false)}
-                  aria-current={isActive ? 'page' : undefined}
                   className={`block rounded-xl px-4 py-3 text-sm font-medium tracking-wide transition ${
                     isActive
                       ? 'bg-sunset text-white'
@@ -182,32 +164,6 @@ export default function Navbar() {
                 </Link>
               );
             })}
-
-            <Link
-              href='/products'
-              onClick={() => setMenuOpen(false)}
-              aria-current={isProductsPage ? 'page' : undefined}
-              className={`block rounded-xl px-4 py-3 text-center text-sm font-semibold tracking-wide transition ${
-                isProductsPage
-                  ? 'border border-sunset bg-transparent text-sunset'
-                  : 'bg-gradient-to-r from-mango to-sunset text-white hover:opacity-90'
-              }`}
-            >
-              Shop Now
-            </Link>
-
-            <Link
-              href='/signin'
-              onClick={() => setMenuOpen(false)}
-              aria-current={isSignInPage ? 'page' : undefined}
-              className={`block w-full rounded-full border px-4 py-3 text-center text-sm font-semibold transition ${
-                isSignInPage
-                  ? 'border-sunset bg-transparent text-sunset'
-                  : 'border-sunset text-sunset hover:bg-sunset hover:text-white'
-              }`}
-            >
-              Sign In
-            </Link>
           </div>
         </div>
       </nav>

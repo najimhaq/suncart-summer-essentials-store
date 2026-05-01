@@ -1,8 +1,11 @@
 export async function getAllProducts() {
   try {
-    const res = await fetch('http://localhost:3000/products.json', {
-      cache: 'no-store',
-    });
+    const res = await fetch(
+      'https://suncart-summer-essentials-store-ten.vercel.app/products.json',
+      {
+        cache: 'no-store',
+      }
+    );
 
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
@@ -21,7 +24,7 @@ export async function getProductDetails(id) {
     const productId = parseInt(id);
 
     const res = await fetch(
-      'http://localhost:3000/products.json',
+      'https://suncart-summer-essentials-store-ten.vercel.app/products.json',
       {
         cache: 'no-store',
       }
