@@ -24,6 +24,7 @@ const SignUpPage = () => {
   const [error, setError] = useState('');
   const router = useRouter();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -31,11 +32,17 @@ const SignUpPage = () => {
     const formdata = new FormData(e.target);
     const userData = Object.fromEntries(formdata.entries());
 
+
+    let imageUrl = userData.image;
+    if (imageUrl && !imageUrl.startsWith('http')) {
+      imageUrl = undefined;
+    }
+
     try {
       const result = await authClient.signUp.email({
         name: userData.name,
         email: userData.email,
-        image: userData.image,
+        image: imageUrl || undefined,
         password: userData.password,
       });
 
@@ -215,6 +222,6 @@ const SignUpPage = () => {
       </div>
     </section>
   );
-};
+};;
 
 export default SignUpPage;

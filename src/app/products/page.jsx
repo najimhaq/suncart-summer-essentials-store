@@ -1,71 +1,79 @@
 'use client';
 
+import 'animate.css';
 import { useEffect, useState } from 'react';
 import { getAllProducts } from '../utils/data';
 import ProductCard from '../components/ProductCard';
 import { IoIosSunny } from 'react-icons/io';
+import Categories from '../components/Categories';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const loadProducts = async () => {
-      try {
-        const data = await getAllProducts();
-        setProducts(data);
-      } catch (err) {
-        console.error(err);
-        setError('Failed to load products. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
+      const data = await getAllProducts();
+      setProducts(data);
+      setFilteredProducts(data);
+      setLoading(false);
     };
-
     loadProducts();
   }, []);
 
+  const filterByCategory = (categoryName) => {
+    if (categoryName === 'all') {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (product) => product.category === categoryName
+      );
+      setFilteredProducts(filtered);
+    }
+  };
+
   if (loading) {
-    return (
-      <div className='text-center py-20 text-gray-500'>
-        Loading summer essentials...
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div className='text-center py-20 text-red-500'>{error}</div>;
-  }
-
-  if (products.length === 0) {
-    return (
-      <div className='text-center py-20 text-gray-500'>
-        No products available right now.
-      </div>
-    );
+    return <div className='text-center py-20'>Loading...</div>;
   }
 
   return (
-    <div className='max-w-7xl mx-auto px-4 py-8'>
-      <div className='flex flex-col items-start text-center'>
-        <p >
-          <IoIosSunny className='text-mango text-center size-12' />
-        </p>
+    <div className='max-w-7xl mx-auto px-4 py-2'>
+      <div className='text-center mb-4'>
+        <div className='space-y-4'>
+          {/* হট ডিলস - স্পন্দন অ্যানিমেশন */}
+          <p className='ml-4 text-lg md:text-2xl font-semibold text-sunset tracking-widest animate__animated animate__pulse animate__infinite'>
+            Hot Deals 🔥
+          </p>
 
-        <h2 className='text-6xl font-bold ml-6 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-sunset to-mango'>
-          SUMMER
-        </h2>
-        <h1 className='text-7xl font-bold ml-6 text-transparent bg-clip-text bg-gradient-to-r from-sunset to-mango mb-12'>
-          COLLECTIONS
-        </h1>
+          {/* টেক্সট - ফেড ইন ডাউন অ্যানিমেশন */}
+          <h3 className='text-4xl md:text-7xl font-extrabold text-white drop-shadow-lg animate__animated animate__fadeInDown animate__delay-1s'>
+            <span className='bg-gradient-to-r from-wave via-sunset to-yellow-400 bg-clip-text text-transparent'>
+              Summer Sale 50% OFF
+            </span>
+          </h3>
+        </div>
+      </div>
+
+      <Categories onSelectCategory={filterByCategory} />
+
+      <div className='mt-8 mb-4 text-center'>
+        <p className='text-dusk/70'>
+          Showing {filteredProducts.length} of {products.length} products
+        </p>
       </div>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+
+      {filteredProducts.length === 0 && (
+        <div className='text-center py-20 text-gray-500'>
+          No products found in this category
+        </div>
+      )}
     </div>
   );
 }

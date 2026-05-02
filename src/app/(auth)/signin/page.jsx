@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight } from 'react-icons/fi';
-import { FaGithub } from 'react-icons/fa'; // <-- নতুন ইমপোর্ট
+import { FaGithub } from 'react-icons/fa';
 import { BeatLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
@@ -16,59 +16,64 @@ const SignInPage = () => {
   const [error, setError] = useState('');
   const router = useRouter();
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
+
     const formdata = new FormData(e.target);
     const userData = Object.fromEntries(formdata.entries());
-    try {
-      const result = await authClient.signIn.email(
-        {
-          email: userData.email,
-          password: userData.password,
-          rememberMe: true,
-        },
-        {
-          onSuccess: () => {
-            toast.success('Account login successfully');
-            setTimeout(() => {
-              router.push('/my-profile');
-            }, 1500);
-          },
-        }
-      );
 
-      if (result.error) {
+    try {
+      const result = await authClient.signIn.email({
+        email: userData.email,
+        password: userData.password,
+        rememberMe: true,
+      });
+
+      if (result?.error) {
         setError(result.error.message || 'Invalid credentials');
+        setIsLoading(false);
+        return;
       }
+
+
+      toast.success('Account login successfully');
+
+
+      setTimeout(() => {
+        window.location.href = '/my-profile';
+      }, 1500);
     } catch (err) {
       setError('Something went wrong. Please try again.');
+      setIsLoading(false);
+    }
+  };
+  const handleGoogleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    try {
+      await authClient.signIn.social({
+        provider: 'google',
+        callbackURL:
+          process.env.NODE_ENV === 'production'
+            ? 'https://najimhub.xyz/my-profile'
+            : 'http://localhost:3000/my-profile',
+      });
+      toast.success('Account Login successfully');
+      router.push('/my-profile');
+    } catch (error) {
+      console.error('Google sign in error:', error);
+      setError('Google sign in failed. Please try again.');
+      toast.error('Google sign in failed');
     } finally {
       setIsLoading(false);
     }
   };
-const handleGoogleSubmit = async (e) => {
-  e.preventDefault();
-  setIsLoading(true); 
-  setError('');
-
-  try {
-    await authClient.signIn.social({
-      provider: 'google',
-      callbackURL:
-        process.env.NODE_ENV === 'production'
-          ? 'https://najimhub.xyz/my-profile'
-          : 'http://localhost:3000/my-profile',
-    });
-  } catch (error) {
-    console.error('Google sign in error:', error);
-    setError('Google sign in failed. Please try again.');
-    toast.error('Google sign in failed');
-  } finally {
-    setIsLoading(false);
-  }
-};
 
   return (
     <section className='relative flex min-h-screen items-center justify-center overflow-hidden bg-sand px-4 py-12'>
@@ -223,6 +228,6 @@ const handleGoogleSubmit = async (e) => {
       </div>
     </section>
   );
-};
+};;
 
 export default SignInPage;

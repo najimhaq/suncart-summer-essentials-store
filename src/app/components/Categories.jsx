@@ -1,3 +1,6 @@
+// app/components/Categories.jsx
+'use client';
+
 import { FaToolbox, FaTshirt } from 'react-icons/fa';
 import { GiFootprint } from 'react-icons/gi';
 import { MdOutlineFace4 } from 'react-icons/md';
@@ -5,6 +8,7 @@ import { VscLayoutSidebarLeftDock } from 'react-icons/vsc';
 import PageWrapper from './PageWrapper';
 
 const categories = [
+  { name: 'All', icon: null, featured: false }, // All বাটন যোগ করুন
   { name: 'Accessories', icon: FaToolbox, featured: false },
   { name: 'Footwear', icon: GiFootprint, featured: false },
   { name: 'Skincare', icon: MdOutlineFace4, featured: false },
@@ -12,48 +16,34 @@ const categories = [
   { name: 'Clothing', icon: FaTshirt, featured: false },
 ];
 
-const Categories = () => {
+const Categories = ({ onSelectCategory }) => {
   return (
     <section className='pt-4'>
       <PageWrapper>
-        <div className='mb-6'>
-          <h2 className='text-2xl font-bold text-dusk'>Shop by Category</h2>
-          <p className='mt-1 text-sm text-dusk/70'>
-            Explore essentials picked for your lifestyle
-          </p>
-        </div>
 
-        <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6'>
+
+        <div className='flex flex-wrap gap-4 justify-center'>
           {categories.map((item) => {
             const Icon = item.icon;
 
             return (
               <button
                 key={item.name}
-                className={`group rounded-3xl border p-5 sm:p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
-                  item.featured
-                    ? 'bg-sunset text-sand border-sunset'
-                    : 'bg-sand text-dusk border-dusk/10 hover:border-sunset/30'
-                }`}
+                onClick={() =>
+                  onSelectCategory(item.name === 'All' ? 'all' : item.name)
+                }
+                className='group flex flex-col items-center p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-sunset/10 min-w-[80px]'
               >
-                <div
-                  className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${
-                    item.featured ? 'bg-sand text-sunset' : 'bg-mango text-dusk'
-                  }`}
-                >
-                  <Icon className='text-[26px]' />
+                <div className='mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-mango text-dusk group-hover:bg-sunset group-hover:text-white transition-all'>
+                  {Icon ? (
+                    <Icon className='text-[22px]' />
+                  ) : (
+                    <span className='text-lg font-bold'>🎯</span>
+                  )}
                 </div>
-
-                <h3 className='text-sm sm:text-base font-semibold'>
+                <h3 className='text-xs sm:text-sm font-semibold text-dusk'>
                   {item.name}
                 </h3>
-                <p
-                  className={`mt-1 text-xs ${
-                    item.featured ? 'text-sand/80' : 'text-dusk/60'
-                  }`}
-                >
-                  Explore now
-                </p>
               </button>
             );
           })}

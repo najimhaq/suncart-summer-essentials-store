@@ -1,13 +1,25 @@
+
 import { useState } from 'react';
 import Image from 'next/image';
 
 export default function Avatar({ name, image, size = 40 }) {
   const [imgError, setImgError] = useState(false);
 
-
   const colorBg = 'bg-sunset';
 
-  if (image && !imgError) {
+
+  const isValidUrl = (url) => {
+    if (!url || typeof url !== 'string') return false;
+    try {
+      new URL(url);
+      return url.startsWith('http://') || url.startsWith('https://');
+    } catch (e) {
+      return false;
+    }
+  };
+
+
+  if (image && isValidUrl(image) && !imgError) {
     return (
       <Image
         src={image}
@@ -19,7 +31,6 @@ export default function Avatar({ name, image, size = 40 }) {
       />
     );
   }
-
 
   return (
     <div

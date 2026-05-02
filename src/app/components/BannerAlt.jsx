@@ -73,8 +73,8 @@ export default function Banner() {
                   <div className='h-12 w-px bg-white/30' />
 
                   <div>
-                    <p className='text-2xl font-bold text-mango'>$99</p>
-                    <p className='text-sm text-white/40 line-through'>$129</p>
+                    <p className='text-2xl font-bold text-mango'>$49</p>
+                    <p className='text-sm text-white/40 line-through'>$99</p>
                   </div>
                 </div>
 
