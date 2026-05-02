@@ -6,7 +6,6 @@ export default function Home() {
     <>
       <div className='container mx-auto'>
         <BannerAlt />
-
         <Hero />
       </div>
     </>

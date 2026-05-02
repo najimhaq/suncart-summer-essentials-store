@@ -1,4 +1,4 @@
-// app/components/Navbar.jsx
+
 'use client';
 
 import Link from 'next/link';
@@ -104,7 +104,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+       
           <div className='hidden items-center gap-2 rounded-full border border-dusk/10 bg-white/40 px-2 py-2 md:flex'>
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
@@ -124,7 +124,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Desktop Auth Buttons */}
+
           <div className='hidden items-center gap-3 md:flex'>
             {!user && (
               <>
