@@ -3,8 +3,8 @@
 import authClient from '../lib/auth-clint';
 import Avatar from '../components/AvatarPage';
 import Link from 'next/link';
-import { ModalForm, SimpleModalForm } from '../components/ModalForm';
-import { Modal } from '@heroui/react';
+import { ModalForm } from '../components/ModalForm';
+
 
 export default function ProfilePage() {
   const { data, isPending, error } = authClient.useSession();
