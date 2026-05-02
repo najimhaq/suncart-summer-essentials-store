@@ -35,9 +35,11 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${poppins.variable} ${inter.variable} ${pacifico.variable}`}
     >
-      <body className='antialiased bg-[#f7f3eb] text-dusk'>
+      <body className='flex flex-col min-h-screen antialiased bg-sand text-dusk'>
         <Navbar />
-        <main className='container mx-auto flex-1 px-4 pt-28'>{children}</main>
+        <main className='container mx-auto flex-grow px-4 pt-28'>
+          {children}
+        </main>
         <Footer />
         <ToastContainer position='top-right' autoClose={2000} />
       </body>
