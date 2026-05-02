@@ -20,7 +20,7 @@ const navLinks = [
 export default function Navbar() {
   const result = authClient.useSession();
   const user = result.data?.user;
-  console.log(user);
+  
   const router = useRouter();
   const handleSignOut = async (e) => {
     await authClient.signOut({

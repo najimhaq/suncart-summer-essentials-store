@@ -26,11 +26,18 @@ export default function Banner() {
 
             <div className='relative flex h-full items-center px-6 py-16 md:px-12 lg:px-20 animate__animated animate__fadeInUp'>
               <div className='max-w-xl space-y-6'>
-                <div className='text-xl font-script font-semibold tracking-wide text-mango animate__animated animate__fadeInDown'>
-                  Suncart
+                <div className='space-y-4'>
+                  <p className=' ml-4 text-lg font-semibold text-yellow-300 tracking-widest animate__animated animate__pulse animate__infinite'>
+                    Hot Deals 🔥
+                  </p>
+                  <h3 className='text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg animate__animated animate__fadeInDown animate__delay-1s'>
+                    <span className='bg-gradient-to-r from-wave via-sunset to-yellow-400 bg-clip-text text-transparent'>
+                      Summer Sale 50% OFF
+                    </span>
+                  </h3>
                 </div>
 
-                <h1 className='text-5xl font-bold text-white md:text-7xl animate__animated animate__fadeInDown animate__delay-1s'>
+                <h1 className='text-3xl font-bold text-white md:text-5xl animate__animated animate__fadeInDown animate__delay-1s'>
                   SUNSCREEN
                 </h1>
 
