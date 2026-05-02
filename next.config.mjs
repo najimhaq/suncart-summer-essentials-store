@@ -26,7 +26,15 @@ const nextConfig = {
         hostname: 'placehold.co',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.flaticon.com',
+        pathname: '/**',
+      },
     ],
+  },
+  env: {
+    VERCEL_URL: process.env.VERCEL_URL,
   },
 };
 

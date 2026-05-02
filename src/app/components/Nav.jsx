@@ -101,3 +101,14 @@ export default function Navbar() {
     </nav>
   );
 }
+
+{/* <Link
+  href='/products'
+  className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold tracking-wide transition duration-300 ${
+    isProductsPage
+      ? 'border-sunset bg-transparent text-sunset'
+      : 'border-sunset bg-sunset text-white hover:bg-transparent hover:text-sunset'
+  }`}
+>
+  Shop Now
+</Link>; */}

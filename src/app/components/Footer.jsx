@@ -52,12 +52,10 @@ export default function Footer() {
               <input
                 type='email'
                 placeholder='Your email'
-                className='flex-1 md:w-80 px-5 py-3 rounded-xl bg-white/10 border border-white/20
-                         text-white placeholder-white/40 outline-none focus:border-mango'
+                className='flex-1 md:w-80 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 outline-none focus:border-mango'
               />
               <button
-                className='px-6 py-3 bg-gradient-to-r from-mango to-sunset
-                               text-white font-medium rounded-xl hover:shadow-lg transition-all'
+                className='px-6 py-3 bg-gradient-to-r from-mango to-sunset text-white font-medium rounded-xl hover:shadow-lg transition-all'
               >
                 Subscribe
               </button>
@@ -78,7 +76,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className='text-white/60 mb-6 max-w-sm'>
-              Bangladesh's best summer essentials store. Premium quality
+              Bangladesh best summer essentials store. Premium quality
               products delivered right to your doorstep.
             </p>
             <div className='space-y-3'>

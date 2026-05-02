@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { getAllProducts } from '../utils/data';
 import ProductCard from '../components/ProductCard';
+import { IoIosSunny } from 'react-icons/io';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -46,8 +47,19 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className='max-w-7xl mx-auto px-4 py-12'>
-      <h1 className='text-4xl font-bold text-center mb-12'>Our Collection</h1>
+    <div className='max-w-7xl mx-auto px-4 py-8'>
+      <div className='flex flex-col items-start text-center'>
+        <p >
+          <IoIosSunny className='text-mango text-center size-12' />
+        </p>
+
+        <h2 className='text-6xl font-bold ml-6 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-sunset to-mango'>
+          SUMMER
+        </h2>
+        <h1 className='text-7xl font-bold ml-6 text-transparent bg-clip-text bg-gradient-to-r from-sunset to-mango mb-12'>
+          COLLECTIONS
+        </h1>
+      </div>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
         {products.map((product) => (
