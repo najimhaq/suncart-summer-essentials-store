@@ -10,7 +10,7 @@ export default function ProfilePage() {
 
   if (isPending) {
     return (
-      <div className='flex min-h-screen items-center justify-center'>
+      <div className='flex min-h-screen items-center justify-center max-w-7xl mx-auto'>
         <p className='text-gray-600 animate-pulse mr-5'>Loading profile...</p>
         <p>
           <span className='loading loading-spinner text-accent'></span>

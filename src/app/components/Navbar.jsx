@@ -61,8 +61,8 @@ export default function Navbar() {
   if (!mounted) {
     return (
       <header className='fixed top-0 left-0 z-50 w-full'>
-        <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
-          <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
+        <nav className='mx-auto mt-4 max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
+          <div className='mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8'>
             <Link href='/' className='flex items-center gap-3'>
               <div className='flex h-11 w-11 items-center justify-center rounded-full border border-sunset/30 bg-white/70 text-sunset shadow-sm'>
                 <FaSun className='w-7 h-7 text-sunset' />

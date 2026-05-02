@@ -1,4 +1,8 @@
 // app/lib/auth-server.js
+console.log('🔍 BETTER_AUTH_URL:', process.env.BETTER_AUTH_URL);
+console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
+console.log('🔍 VERCEL_URL:', process.env.VERCEL_URL);
+
 import { betterAuth } from 'better-auth';
 import { MongoClient } from 'mongodb';
 import { mongodbAdapter } from 'better-auth/adapters/mongodb';
@@ -7,15 +11,10 @@ const client = new MongoClient(process.env.AUTH_DB_URI);
 await client.connect();
 const db = client.db('suncart');
 
-// 🔥 ডায়নামিক baseURL - প্রোডাকশন ডিটেক্ট করুন
-const baseURL = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.BETTER_AUTH_URL || 'http://localhost:3000';
-
-console.log('✅ Auth Server Base URL:', baseURL);
-
 export const auth = betterAuth({
-  emailAndPassword: { enabled: true },
+  emailAndPassword: {
+    enabled: true,
+  },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_SUNCART_ID,
@@ -24,10 +23,9 @@ export const auth = betterAuth({
   },
   database: mongodbAdapter(db, { client }),
   secret: process.env.BETTER_AUTH_SECRET,
-  baseURL: baseURL, // ডায়নামিক ভ্যালু ব্যবহার করুন
-  trustedOrigins: [
-    'http://localhost:3000',
-    'https://suncart-summer-essentials-store-ten.vercel.app',
-    /\.vercel\.app$/,
-  ],
+
+  // 👇 এই লাইনটি গুরুত্বপূর্ণ (যোগ করুন বা চেক করুন)
+  baseURL: 'https://najimhub.xyz',
+
+  trustedOrigins: ['http://localhost:3000', 'https://najimhub.xyz'],
 });

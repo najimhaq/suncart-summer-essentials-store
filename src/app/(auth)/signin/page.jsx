@@ -50,17 +50,23 @@ const SignInPage = () => {
   };
 const handleGoogleSubmit = async (e) => {
   e.preventDefault();
+  setIsLoading(true); 
+  setError('');
+
   try {
     await authClient.signIn.social({
       provider: 'google',
-      callbackURL: `${
+      callbackURL:
         process.env.NODE_ENV === 'production'
-          ? 'https://suncart-summer-essentials-store-ten.vercel.app'
-          : 'http://localhost:3000'
-      }/my-profile`,
+          ? 'https://najimhub.xyz/my-profile'
+          : 'http://localhost:3000/my-profile',
     });
   } catch (error) {
-    console.error(error);
+    console.error('Google sign in error:', error);
+    setError('Google sign in failed. Please try again.');
+    toast.error('Google sign in failed');
+  } finally {
+    setIsLoading(false);
   }
 };
 
