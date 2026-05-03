@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.ibb.co/cSdGkB9d/067c06d4-eb9f-4dff-afc8-b32a8f22d482-d9672a6616fa5284db59759ef4a1c20d.webp" alt="SunCart Logo" width="120" />
+  <img src="https://i.ibb.co/3mbXRWBd/Screenshot-2026-05-03-at-2-01-55-PM.png" alt="SunCart Logo" width="120" />
   <h1>☀️ SunCart - Summer Essentials Store</h1>
   <p><strong>Chasing Sun, Dressed in Style</strong></p>
 
