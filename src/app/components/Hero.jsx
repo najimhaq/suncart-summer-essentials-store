@@ -19,7 +19,7 @@ export default function Hero() {
     <section className='relative my-8 overflow-hidden rounded-3xl'>
       <PageWrapper>
         {/* Background Elements */}
-        <div className='absolute inset-0 bg-gradient-to-br from-mango/20 via-sunset/10 to-wave/20' />
+        <div className='absolute inset-0 bg-linear-to-br from-mango/20 via-sunset/10 to-wave/20' />
 
         {/* Animated Background Blobs */}
         <div className='absolute top-20 right-20 w-64 h-64 bg-mango/20 rounded-full blur-3xl animate__animated animate__fadeIn animate__slow' />
@@ -39,7 +39,7 @@ export default function Hero() {
                 {/* Heading */}
                 <h1 className='text-5xl md:text-7xl font-bold text-dusk leading-tight animate__animated animate__fadeInLeft'>
                   Make Your <span className='font-script'>Summer</span> <br />
-                  <span className='text-transparent bg-clip-text bg-gradient-to-r from-mango to-sunset'>
+                  <span className='text-transparent bg-clip-text bg-linear-to-r from-mango to-sunset'>
                     More Colorful
                   </span>
                 </h1>
@@ -69,7 +69,7 @@ export default function Hero() {
               <div className='flex flex-wrap gap-4 pt-4'>
                 <Link
                   href='/products'
-                  className='group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sunset to-mango text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate__animated animate__zoomIn animate__delay-1s'
+                  className='group inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-sunset to-mango text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate__animated animate__zoomIn animate__delay-1s'
                 >
                   Start Shopping
                   <ArrowRight className='w-5 h-5 group-hover:translate-x-1 transition-transform' />
@@ -88,7 +88,7 @@ export default function Hero() {
             <div className='hidden lg:block relative'>
               <div className='relative w-full aspect-square animate__animated animate__fadeInRight animate__delay-1s'>
                 {/* Background Shape */}
-                <div className='absolute inset-0 bg-gradient-to-br from-mango/30 to-sunset/30 rounded-3xl transform rotate-3 animate__animated animate__pulse animate__infinite animate__slower' />
+                <div className='absolute inset-0 bg-linear-to-br from-mango/30 to-sunset/30 rounded-3xl transform rotate-3 animate__animated animate__pulse animate__infinite animate__slower' />
 
                 {/* Main Image */}
                 <div className='absolute inset-0 bg-sand rounded-3xl shadow-2xl overflow-hidden animate__animated animate__zoomIn'>

@@ -1,4 +1,3 @@
-// components/Footer.jsx
 import Link from 'next/link';
 import {
   FaSun,
@@ -54,9 +53,7 @@ export default function Footer() {
                 placeholder='Your email'
                 className='flex-1 md:w-80 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 outline-none focus:border-mango'
               />
-              <button
-                className='px-6 py-3 bg-gradient-to-r from-mango to-sunset text-white font-medium rounded-xl hover:shadow-lg transition-all'
-              >
+              <button className='px-6 py-3 bg-gradient-to-r from-mango to-sunset text-white font-medium rounded-xl hover:shadow-lg transition-all'>
                 Subscribe
               </button>
             </div>
@@ -76,8 +73,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className='text-white/60 mb-6 max-w-sm'>
-              Bangladesh best summer essentials store. Premium quality
-              products delivered right to your doorstep.
+              Bangladesh best summer essentials store. Premium quality products
+              delivered right to your doorstep.
             </p>
             <div className='space-y-3'>
               <div className='flex items-center gap-3 text-white/60'>
@@ -156,22 +153,19 @@ export default function Footer() {
             <div className='flex items-center gap-4'>
               <a
                 href='#'
-                className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center
-                                   hover:bg-mango hover:text-dusk transition-all'
+                className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mango hover:text-dusk transition-all'
               >
                 <FaFacebook className='w-5 h-5' />
               </a>
               <a
                 href='#'
-                className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center
-                                   hover:bg-mango hover:text-dusk transition-all'
+                className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mango hover:text-dusk transition-all'
               >
                 <FaInstagram className='w-5 h-5' />
               </a>
               <a
                 href='#'
-                className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center
-                                   hover:bg-mango hover:text-dusk transition-all'
+                className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-mango hover:text-dusk transition-all'
               >
                 <FaTwitter className='w-5 h-5' />
               </a>

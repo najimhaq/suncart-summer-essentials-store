@@ -1,7 +1,3 @@
-// app/lib/auth-server.js
-console.log('🔍 BETTER_AUTH_URL:', process.env.BETTER_AUTH_URL);
-console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
-console.log('🔍 VERCEL_URL:', process.env.VERCEL_URL);
 
 import { betterAuth } from 'better-auth';
 import { MongoClient } from 'mongodb';
@@ -24,7 +20,6 @@ export const auth = betterAuth({
   database: mongodbAdapter(db, { client }),
   secret: process.env.BETTER_AUTH_SECRET,
 
-  // 👇 এই লাইনটি গুরুত্বপূর্ণ (যোগ করুন বা চেক করুন)
   baseURL: 'https://najimhub.xyz',
 
   trustedOrigins: ['http://localhost:3000', 'https://najimhub.xyz'],

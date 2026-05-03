@@ -1,4 +1,3 @@
-// app/components/Categories.jsx
 'use client';
 
 import { FaToolbox, FaTshirt } from 'react-icons/fa';
@@ -20,8 +19,6 @@ const Categories = ({ onSelectCategory }) => {
   return (
     <section className='pt-4'>
       <PageWrapper>
-
-
         <div className='flex flex-wrap gap-4 justify-center'>
           {categories.map((item) => {
             const Icon = item.icon;
@@ -32,7 +29,7 @@ const Categories = ({ onSelectCategory }) => {
                 onClick={() =>
                   onSelectCategory(item.name === 'All' ? 'all' : item.name)
                 }
-                className='group flex flex-col items-center p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-sunset/10 min-w-[80px]'
+                className='group flex flex-col items-center p-4 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-sunset/10 min-w-20'
               >
                 <div className='mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-mango text-dusk group-hover:bg-sunset group-hover:text-white transition-all'>
                   {Icon ? (

@@ -7,8 +7,6 @@ import {
   Home,
   Package,
   Phone,
-  ArrowLeft,
-  Search,
 } from 'lucide-react';
 
 export default function NotFound() {
@@ -23,17 +21,17 @@ export default function NotFound() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-sand/20 via-white to-sunset/5 flex items-center justify-center px-4 py-20'>
+    <div className='min-h-screen bg-linear-to-br from-sand/20 via-white to-sunset/5 flex items-center justify-center px-4 py-20'>
       <div className='max-w-2xl w-full mx-auto text-center'>
         <div className='relative mb-8'>
           <div className='text-[120px] md:text-[180px] font-bold leading-none'>
-            <span className='bg-gradient-to-r from-sunset via-mango to-sunset bg-clip-text text-transparent animate-pulse'>
+            <span className='bg-linear-to-r from-sunset via-mango to-sunset bg-clip-text text-transparent animate-pulse'>
               4
             </span>
-            <span className='bg-gradient-to-r from-sunset via-mango to-sunset bg-clip-text text-transparent animate-pulse delay-100'>
+            <span className='bg-linear-to-r from-sunset via-mango to-sunset bg-clip-text text-transparent animate-pulse delay-100'>
               0
             </span>
-            <span className='bg-gradient-to-r from-sunset via-mango to-sunset bg-clip-text text-transparent animate-pulse delay-200'>
+            <span className='bg-linear-to-r from-sunset via-mango to-sunset bg-clip-text text-transparent animate-pulse delay-200'>
               4
             </span>
           </div>
@@ -48,10 +46,9 @@ export default function NotFound() {
         </h1>
 
         <p className='text-dusk/70 text-lg mb-6 max-w-md mx-auto'>
-          Looks like you've wandered off the sunny path. The page you're looking
-          for doesn't exist or has been moved.
+          Looks like you&apos;ve wandered off the sunny path. The page
+          you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-
 
         <div className='flex flex-col sm:flex-row gap-4 justify-center'>
           <Link
@@ -79,7 +76,6 @@ export default function NotFound() {
           </Link>
         </div>
 
-     
         <div className='mt-12 pt-8 border-t border-dusk/10'>
           <p className='text-dusk/60 text-sm mb-4'>You might be looking for:</p>
           <div className='flex flex-wrap gap-3 justify-center'>
@@ -100,9 +96,8 @@ export default function NotFound() {
           </div>
         </div>
 
-        {/* ফান ফ্যাক্ট */}
         <div className='mt-8 text-center text-dusk/40 text-xs'>
-          <p>✨ Every summer has a story - let's find yours instead! ✨</p>
+          <p>✨ Every summer has a story - lets find yours instead! ✨</p>
         </div>
       </div>
     </div>

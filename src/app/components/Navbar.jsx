@@ -1,10 +1,9 @@
-
 'use client';
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import authClient from '../lib/auth-clint';
 import AvatarPage from './AvatarPage';
 import { toast } from 'react-toastify';
@@ -104,7 +103,6 @@ export default function Navbar() {
             </div>
           </Link>
 
-       
           <div className='hidden items-center gap-2 rounded-full border border-dusk/10 bg-white/40 px-2 py-2 md:flex'>
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
@@ -124,7 +122,6 @@ export default function Navbar() {
             })}
           </div>
 
-
           <div className='hidden items-center gap-3 md:flex'>
             {!user && (
               <>
@@ -140,7 +137,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href='/signup'
-                  className='rounded-full bg-gradient-to-r from-sunset to-mango px-5 py-2.5 text-sm font-semibold tracking-wide text-white transition duration-300 hover:scale-105 hover:shadow-lg'
+                  className='rounded-full bg-linear-to-r from-sunset to-mango px-5 py-2.5 text-sm font-semibold tracking-wide text-white transition duration-300 hover:scale-105 hover:shadow-lg'
                 >
                   Sign Up
                 </Link>
@@ -187,7 +184,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
-            menuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+            menuOpen ? 'max-h-150 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className='space-y-3 px-4 pb-6 pt-4'>
@@ -226,7 +223,7 @@ export default function Navbar() {
                 <Link
                   href='/signup'
                   onClick={() => setMenuOpen(false)}
-                  className='block w-full rounded-xl bg-gradient-to-r from-sunset to-mango px-4 py-3 text-center text-sm font-semibold text-white transition hover:scale-105'
+                  className='block w-full rounded-xl bg-linear-to-r from-sunset to-mango px-4 py-3 text-center text-sm font-semibold text-white transition hover:scale-105'
                 >
                   Sign Up
                 </Link>

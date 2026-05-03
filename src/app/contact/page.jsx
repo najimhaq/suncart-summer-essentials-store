@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaSun } from 'react-icons/fa';
 
+export const metadata = {
+  title: 'Suncart - Contact',
+};
+
 const ContactPage = () => {
   return (
     <div className='px-4 py-24 sm:px-6 lg:px-8'>
-      <div className='mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-mango via-wave to-sunset text-white'>
+      <div className='mx-auto max-w-7xl rounded-3xl bg-linear-to-br from-mango via-wave to-sunset text-white'>
         <div className='grid grid-cols-1 gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-5 lg:px-12'>
           {/* Brand */}
           <div className='lg:col-span-2'>
@@ -33,7 +37,7 @@ const ContactPage = () => {
             <div className='space-y-4'>
               <div className='flex items-center gap-3 text-white/80'>
                 <FaPhone className='h-5 w-5 text-sunset' />
-                <span className='text-dusk'>+880 17XX-XXXXXX</span>
+                <span className='text-dusk'>+880 1717-791817</span>
               </div>
               <div className='flex items-center gap-3 text-white/80'>
                 <FaEnvelope className='h-5 w-5 text-sunset' />
@@ -41,7 +45,7 @@ const ContactPage = () => {
               </div>
               <div className='flex items-center gap-3 text-white/80'>
                 <FaMapMarkerAlt className='h-5 w-5 text-sunset' />
-                <span className='text-dusk'>Dhaka, Bangladesh</span>
+                <span className='text-dusk'>Khulna, Bangladesh</span>
               </div>
             </div>
           </div>
@@ -54,7 +58,7 @@ const ContactPage = () => {
                 <label className='mb-1 block text-sm font-medium'>Name</label>
                 <input
                   type='text'
-                  className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-[#ffd166]'
+                  className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-mango'
                   placeholder='Your name'
                 />
               </div>
@@ -62,7 +66,7 @@ const ContactPage = () => {
                 <label className='mb-1 block text-sm font-medium'>Email</label>
                 <input
                   type='email'
-                  className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-[#ffd166]'
+                  className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-mango'
                   placeholder='Your email'
                 />
               </div>
@@ -72,13 +76,13 @@ const ContactPage = () => {
                 </label>
                 <textarea
                   rows='4'
-                  className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-[#ffd166]'
+                  className='w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-mango'
                   placeholder='Write your message...'
                 />
               </div>
               <button
                 type='submit'
-                className='w-full rounded-lg bg-gradient-to-r from-wave to-mango px-4 py-3 font-semibold text-dusk transition-all duration-300 hover:from-sunset hover:to-wave'
+                className='w-full rounded-lg bg-linear-to-r from-wave to-mango px-4 py-3 font-semibold text-dusk transition-all duration-300 hover:from-sunset hover:to-wave'
               >
                 Send Message
               </button>

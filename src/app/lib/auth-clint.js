@@ -14,7 +14,6 @@ const getBaseURL = () => {
 };
 
 const baseURL = getBaseURL();
-console.log('🔍 Auth Client Base URL:', baseURL);
 
 export const authClient = createAuthClient({
   baseURL: baseURL,

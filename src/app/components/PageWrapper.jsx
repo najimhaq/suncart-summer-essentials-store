@@ -1,4 +1,3 @@
-// app/components/PageWrapper.jsx
 export default function PageWrapper({ children, className = '' }) {
   return (
     <div

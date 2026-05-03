@@ -22,6 +22,3 @@ export const auth = betterAuth({
     client,
   }),
 });
-
-//NiBwBNLn00ZP79cb
-//najim_db_user

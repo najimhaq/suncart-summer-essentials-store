@@ -12,7 +12,7 @@ export default function Banner() {
     <section className='my-8'>
       <PageWrapper>
         <div className='relative overflow-hidden rounded-3xl bg-amber-500'>
-          <div className='relative min-h-[520px] md:min-h-[620px]'>
+          <div className='relative min-h-130 md:min-h-155'>
             <Image
               src={bannerImage}
               alt='Suncart Sunscreen SPF 50+'
@@ -22,7 +22,7 @@ export default function Banner() {
               className='object-cover'
             />
 
-            <div className='absolute inset-0 bg-gradient-to-r from-dusk/80 via-dusk/50 to-transparent' />
+            <div className='absolute inset-0 bg-linear-to-r from-dusk/80 via-dusk/50 to-transparent' />
 
             <div className='relative flex h-full items-center px-6 py-16 md:px-12 lg:px-20 animate__animated animate__fadeInUp'>
               <div className='max-w-xl space-y-6'>
@@ -31,7 +31,7 @@ export default function Banner() {
                     Hot Deals 🔥
                   </p>
                   <h3 className='text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg animate__animated animate__fadeInDown animate__delay-1s'>
-                    <span className='bg-gradient-to-r from-wave via-sunset to-yellow-400 bg-clip-text text-transparent'>
+                    <span className='bg-linear-to-r from-wave via-sunset to-yellow-400 bg-clip-text text-transparent'>
                       Summer Sale 50% OFF
                     </span>
                   </h3>
@@ -80,7 +80,7 @@ export default function Banner() {
 
                 <Link
                   href='/products'
-                  className='inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-mango to-sunset px-8 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-xl animate__animated animate__fadeInUp animate__delay-2s'
+                  className='inline-flex items-center gap-2 rounded-full bg-linear-to-r from-mango to-sunset px-8 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-xl animate__animated animate__fadeInUp animate__delay-2s'
                 >
                   Shop Now
                   <ArrowRight className='h-4 w-4' />
