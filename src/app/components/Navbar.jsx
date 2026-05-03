@@ -83,9 +83,8 @@ export default function Navbar() {
 
   return (
     <header className='fixed top-0 left-0 z-50 w-full'>
-      <nav className='mx-auto w-full border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
-        <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-24'>
-
+      <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
+        <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
           <Link
             href='/'
             className='flex items-center gap-3 hover:scale-105 transition-all duration-300'
@@ -122,7 +121,7 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className='hidden items-center gap-3 md:flex md:mr-2'>
+          <div className='hidden items-center gap-3 md:flex'>
             {!user && (
               <>
                 <Link
@@ -168,7 +167,6 @@ export default function Navbar() {
             )}
           </div>
 
-
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-dusk/10 bg-white/40 text-dusk md:hidden'
@@ -181,14 +179,12 @@ export default function Navbar() {
           </button>
         </div>
 
-
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
             menuOpen ? 'max-h-150 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className='space-y-3 px-4 pb-6 pt-4'>
-
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
               return (
@@ -207,9 +203,7 @@ export default function Navbar() {
               );
             })}
 
-
             <div className='my-4 border-t border-dusk/10'></div>
-
 
             {!user ? (
               <div className='space-y-3'>
