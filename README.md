@@ -45,10 +45,11 @@
 | [Next.js](https://nextjs.org/) | 15.2.4 | React framework with SSR & routing |
 | [React](https://reactjs.org/) | 18.3.1 | UI library |
 | [Tailwind CSS](https://tailwindcss.com/) | 4.2.4 | Utility-first CSS framework |
+| [daisy UI](https://daisyui.com/) | 5.5.19 | Utility-first CSS framework |
 | [MongoDB](https://mongodb.com/) | 7.2.0 | Database |
 | [BetterAuth](https://better-auth.com/) | 1.6.9 | Authentication solution |
-| [Framer Motion](https://www.framer.com/motion/) | 12.13.1 | Animation library |
-| [Lucide React](https://lucide.dev/) | 0.460.0 | Icon library |
+| [Animate CSS](https://animate.style/) | 4.1.1 | Animation library |
+| [React Icons](https://react-icons.github.io/react-icons/) | 5.6.0 | Icon library |
 
 ---
 
@@ -84,7 +85,7 @@ Follow these steps to get your development environment set up:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/suncart.git
+git clone git@github.com:najimhaq/suncart-summer-essentials-store.git
 cd suncart
 
 # 2. Install dependencies
@@ -96,3 +97,21 @@ echo "MONGODB_URI=your_mongodb_connection_string" > .env.local
 
 # 4. Run the development server
 npm run dev
+
+🚀 Deployment
+Vercel (Recommended)
+npm install -g vercel
+vercel
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+<div align="center">
+  <h3>🌞 Made with sunshine for summer lovers 🌞</h3>
+  <p>
+    <a href="https://najimhub.xyz">Live Demo</a> •
+    <a href="https://github.com/najimhaq/suncart-summer-essentials-store">GitHub</a> •
+    <a href="mdnajimulhaque@gmail.com">Contact</a>
+  </p>
+</div>
