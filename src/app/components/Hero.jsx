@@ -16,7 +16,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className='relative my-8 overflow-hidden rounded-3xl'>
+    <section className='relative my-8 mx-8 overflow-hidden rounded-3xl'>
       <PageWrapper>
         {/* Background Elements */}
         <div className='absolute inset-0 bg-linear-to-br from-mango/20 via-sunset/10 to-wave/20' />
