@@ -1,3 +1,4 @@
+// app/signin/page.jsx
 'use client';
 
 import { useState } from 'react';
@@ -7,8 +8,9 @@ import { FaGithub } from 'react-icons/fa';
 import { BeatLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-import authClient from '@/app/lib/auth-clint';
+
 import { FcGoogle } from 'react-icons/fc';
+import authClient from '@/app/lib/auth-clint';
 
 const SigninClientPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +18,7 @@ const SigninClientPage = () => {
   const [error, setError] = useState('');
   const router = useRouter();
 
+  // Email/Password Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -38,7 +41,6 @@ const SigninClientPage = () => {
       }
 
       toast.success('Account login successfully');
-
       setTimeout(() => {
         window.location.href = '/my-profile';
       }, 1500);
@@ -47,6 +49,8 @@ const SigninClientPage = () => {
       setIsLoading(false);
     }
   };
+
+
   const handleGoogleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -55,18 +59,43 @@ const SigninClientPage = () => {
     try {
       await authClient.signIn.social({
         provider: 'google',
-        callbackURL:
-          process.env.NODE_ENV === 'production'
-            ? 'https://najimhub.xyz/my-profile'
-            : 'http://localhost:3000/my-profile',
+        callbackURL: window.location.origin + '/my-profile',
       });
-      toast.success('Account Login successfully');
-      router.push('/my-profile');
+
     } catch (error) {
       console.error('Google sign in error:', error);
       setError('Google sign in failed. Please try again.');
       toast.error('Google sign in failed');
-    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
+  const handleGithubSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    try {
+      // BetterAuth এর সঠিক সিনট্যাক্স
+      await authClient.signIn.social({
+        provider: 'github',
+        callbackURL: window.location.origin + '/my-profile',
+      });
+      // BetterAuth নিজেই রিডাইরেক্ট করবে, এখানে router.push বা toast লাগবে না
+    } catch (error) {
+      console.error('GitHub sign in error:', error);
+
+      // এরর মেসেজ কাস্টমাইজ
+      let errorMessage = 'GitHub sign in failed. Please try again.';
+      if (error.message?.includes('popup')) {
+        errorMessage = 'Pop-up blocked. Please allow popups for this site.';
+      } else if (error.message?.includes('network')) {
+        errorMessage = 'Network error. Please check your connection.';
+      }
+
+      setError(errorMessage);
+      toast.error(errorMessage);
       setIsLoading(false);
     }
   };
@@ -105,7 +134,6 @@ const SigninClientPage = () => {
 
           {/* Email/Password Form */}
           <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
-            {/* Email Field */}
             <div>
               <label className='mb-1.5 block text-xs font-semibold uppercase tracking-wider text-sunset'>
                 Email Address
@@ -122,7 +150,6 @@ const SigninClientPage = () => {
               </div>
             </div>
 
-            {/* Password Field */}
             <div>
               <div className='mb-1.5 flex items-center justify-between'>
                 <label className='text-xs font-semibold uppercase tracking-wider text-sunset'>
@@ -158,7 +185,6 @@ const SigninClientPage = () => {
               </div>
             </div>
 
-            {/* Remember me checkbox */}
             <div className='flex items-center gap-2'>
               <input
                 type='checkbox'
@@ -171,7 +197,6 @@ const SigninClientPage = () => {
               </label>
             </div>
 
-            {/* Submit Button */}
             <button
               type='submit'
               disabled={isLoading}
@@ -181,8 +206,7 @@ const SigninClientPage = () => {
                 <BeatLoader size={10} color='#ffffff' />
               ) : (
                 <>
-                  Sign In
-                  <FiArrowRight className='h-4 w-4' />
+                  Sign In <FiArrowRight className='h-4 w-4' />
                 </>
               )}
             </button>
@@ -201,11 +225,14 @@ const SigninClientPage = () => {
               onClick={handleGoogleSubmit}
               className='flex w-full items-center justify-center gap-2 rounded-xl border border-dusk/10 bg-white py-3 text-sm font-medium text-dusk transition hover:border-wave hover:bg-wave/10'
             >
-              <FcGoogle className='h-5 w-5 text-sunset' />
+              <FcGoogle className='h-5 w-5' />
               Sign in with Google
             </button>
-            <button className='flex w-full items-center justify-center gap-2 rounded-xl border border-dusk/10 bg-white py-3 text-sm font-medium text-dusk transition hover:border-sunset hover:bg-sunset/10'>
-              <FaGithub className='h-5 w-5 text-dusk' />
+            <button
+              onClick={handleGithubSubmit}
+              className='flex w-full items-center justify-center gap-2 rounded-xl border border-dusk/10 bg-white py-3 text-sm font-medium text-dusk transition hover:border-sunset hover:bg-sunset/10'
+            >
+              <FaGithub className='h-5 w-5' />
               Sign in with GitHub
             </button>
           </div>
