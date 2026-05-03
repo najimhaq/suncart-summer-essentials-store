@@ -53,7 +53,7 @@ export default function Footer() {
                 placeholder='Your email'
                 className='flex-1 md:w-80 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 outline-none focus:border-mango'
               />
-              <button className='px-6 py-3 bg-gradient-to-r from-mango to-sunset text-white font-medium rounded-xl hover:shadow-lg transition-all'>
+              <button className='px-6 py-3 bg-linear-to-r from-mango to-sunset text-white font-medium rounded-xl hover:shadow-lg transition-all'>
                 Subscribe
               </button>
             </div>
@@ -79,7 +79,7 @@ export default function Footer() {
             <div className='space-y-3'>
               <div className='flex items-center gap-3 text-white/60'>
                 <FaPhone className='w-5 h-5 text-mango' />
-                <span>+880 17XX-XXXXXX</span>
+                <span>+880 1777-791817</span>
               </div>
               <div className='flex items-center gap-3 text-white/60'>
                 <FaEnvelope className='w-5 h-5 text-mango' />
@@ -87,7 +87,7 @@ export default function Footer() {
               </div>
               <div className='flex items-center gap-3 text-white/60'>
                 <FaMapMarkerAlt className='w-5 h-5 text-mango' />
-                <span>Dhaka, Bangladesh</span>
+                <span>Khulna, Bangladesh</span>
               </div>
             </div>
           </div>
