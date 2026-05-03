@@ -27,9 +27,9 @@ export default function Hero() {
           <div className='grid lg:grid-cols-2 gap-8 items-center'>
             <div className='space-y-6'>
               <div className='animate__animated animate__fadeInDown'>
-                <div className='inline-flex items-center gap-2 px-3 py-1.5 bg-wave/70 text-dusk rounded-full text-xs font-medium mb-4'>
-                  <Sparkles className='w-3 h-3' />
-                  Summer Collection 2025
+                <div className='inline-flex items-center gap-2 px-3 py-1.5 bg-mango/70 text-dusk rounded-full text-xs font-medium mb-4'>
+                  <Sparkles className='w-3 h-3 animate-ping' />
+                  Summer Collection 2026
                 </div>
 
                 <h1 className='text-4xl md:text-6xl font-bold text-dusk leading-snug animate__animated animate__fadeInLeft'>
