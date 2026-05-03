@@ -83,15 +83,15 @@ export default function Navbar() {
 
   return (
     <header className='fixed top-0 left-0 z-50 w-full'>
-      <nav className='mx-auto mt-4 w-[95%] max-w-7xl rounded-2xl border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
-        <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-8'>
-          {/* Logo */}
+      <nav className='mx-auto w-full border border-white/10 bg-sand/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)]'>
+        <div className='flex items-center justify-between px-4 py-3 md:px-6 lg:px-24'>
+
           <Link
             href='/'
             className='flex items-center gap-3 hover:scale-105 transition-all duration-300'
           >
             <div className='flex h-11 w-11 items-center justify-center rounded-full border border-sunset/30 bg-white/70 text-sunset shadow-sm'>
-              <FaSun className='w-7 h-7 text-sunset' />
+              <FaSun className='w-7 h-7 text-sunset animate-spin' />
             </div>
             <div className='leading-tight'>
               <h2 className='font-script text-2xl font-bold tracking-wide text-dusk'>
@@ -122,7 +122,7 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className='hidden items-center gap-3 md:flex'>
+          <div className='hidden items-center gap-3 md:flex md:mr-2'>
             {!user && (
               <>
                 <Link
@@ -168,7 +168,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-dusk/10 bg-white/40 text-dusk md:hidden'
@@ -181,14 +181,14 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
             menuOpen ? 'max-h-150 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className='space-y-3 px-4 pb-6 pt-4'>
-            {/* Navigation Links */}
+
             {navLinks.map((link) => {
               const isActive = isActivePath(link.path);
               return (
@@ -207,10 +207,10 @@ export default function Navbar() {
               );
             })}
 
-            {/* Mobile Auth Section - Divider */}
+
             <div className='my-4 border-t border-dusk/10'></div>
 
-            {/* Mobile Auth Buttons */}
+
             {!user ? (
               <div className='space-y-3'>
                 <Link
