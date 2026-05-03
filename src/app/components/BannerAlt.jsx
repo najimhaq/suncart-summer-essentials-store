@@ -91,7 +91,6 @@ export default function Banner() {
                   </div>
                 </div>
 
-                {/* বাটন গ্রুপ - প্যাডিং ছোট করা হয়েছে */}
                 <div className='flex flex-wrap gap-3 animate__animated animate__fadeInUp animate__delay-2s'>
                   <Link
                     href='/products'
@@ -101,12 +100,11 @@ export default function Banner() {
                     <ArrowRight className='h-3.5 w-3.5' />
                   </Link>
 
-                  {/* Down Button - প্যাডিং ছোট করা হয়েছে */}
                   <button
                     onClick={scrollToFeatured}
                     className='group inline-flex items-center gap-2 px-6 py-2.5 bg-white/80 backdrop-blur-sm text-sunset font-semibold rounded-full shadow-lg hover:shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 border-2 border-sunset/30 text-sm animate__animated animate__zoomIn animate__delay-1s animate__bounce'
                   >
-                    <span>Explore Products</span>
+                    <span>🔥 Hot Deals</span>
                     <ArrowDown className='w-4 h-4 group-hover:translate-y-1 transition-transform duration-300 animate__animated animate__bounce animate__infinite' />
                   </button>
                 </div>
