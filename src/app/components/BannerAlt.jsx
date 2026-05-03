@@ -8,7 +8,7 @@ import bannerImage from '@/app/assets/images/banner.png';
 import PageWrapper from './PageWrapper';
 
 export default function Banner() {
-  // স্ক্রল ফাংশন - ফিচার প্রোডাক্টস সেকশনে নিয়ে যাবে
+
   const scrollToFeatured = () => {
     const featuredSection = document.getElementById('featured-products');
     if (featuredSection) {
@@ -23,7 +23,7 @@ export default function Banner() {
     <section className='my-8'>
       <PageWrapper>
         <div className='relative overflow-hidden rounded-3xl'>
-          {/* উচ্চতা ছোট করা হয়েছে - min-h-130 থেকে min-h-80 এবং md:min-h-100 */}
+
           <div className='relative min-h-80 md:min-h-100'>
             <Image
               src={bannerImage}
@@ -36,7 +36,7 @@ export default function Banner() {
 
             <div className='absolute inset-0 bg-linear-to-r from-dusk/80 via-dusk/50 to-transparent' />
 
-            {/* Paddingও একটু কমানো হয়েছে */}
+        
             <div className='relative flex h-full items-center px-6 py-10 md:px-12 lg:px-20 animate__animated animate__fadeInUp'>
               <div className='max-w-xl space-y-4'>
                 <div className='space-y-2'>
