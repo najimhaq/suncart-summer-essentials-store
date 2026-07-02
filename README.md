@@ -3,7 +3,7 @@
   <h1>☀️ SunCart - Summer Essentials Store</h1>
   <p><strong>Chasing Sun, Dressed in Style</strong></p>
 
-  [![Live Demo](https://img.shields.io/badge/Live_Demo-FF7E36?style=for-the-badge&logo=vercel&logoColor=white)](https://najimhub.xyz)
+  [![Live Demo](https://img.shields.io/badge/Live_Demo-FF7E36?style=for-the-badge&logo=vercel&logoColor=white)](https://suncart-summer-essentials-store-ten.vercel.app/)
   [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/najimhaq/suncart-summer-essentials-store)
   [![Next.js](https://img.shields.io/badge/Next.js-16.2.4-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
